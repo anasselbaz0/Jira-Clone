@@ -7,8 +7,12 @@ node {
     sh "${mvnHome}/bin/mvn package"
   }
   stage ('Build docker image') {
-    def dockerHome = tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-    sh "echo \"${dockerHome}\""
-    sh "${dockerHome}/bin/docker build -t anasselbaz/jira-clone-java:1.0.0 ."
+    dockerCmd "build -t anasselbaz/jira-clone-java:1.0.0 ."
   }
 }
+
+def dockerCmd(args) {
+  def dockerHome = tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+    sh "sudo ${dockerHome}/bin/docker ${args}"
+}
+
