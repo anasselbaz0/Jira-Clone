@@ -6,4 +6,7 @@ node {
     def mvnHome = tool name: 'maven-3', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
+  stage ('Build docker image') {
+    sh 'docker build -t anasselbaz/jira-clone-java:1.0.0 .'
+  }
 }
