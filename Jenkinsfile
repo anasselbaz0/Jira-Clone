@@ -8,6 +8,8 @@ node {
   }
   stage ('Build docker image') {
     def dockerHome = tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+    sh "cd ${dockerHome}/bin/docker"
+    sh "ls -l"
     sh "${dockerHome}/bin/docker build -t anasselbaz/jira-clone-java:1.0.0 ."
   }
 }
