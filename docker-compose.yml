@@ -11,7 +11,7 @@ services:
       - MYSQL_DATABASE=db_projects
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - "3307:3306"
+      - "3307:33060"
     healthcheck:
       test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
       interval: 2s
