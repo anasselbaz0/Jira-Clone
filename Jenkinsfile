@@ -3,7 +3,7 @@ node {
     git 'https://github.com/anasselbaz0/Jira-Clone'
   }
   stage ('Compile package') {
-    def mvnHome = tool name: '', type: 'maven'
+    def mvnHome = tool name: 'maven-3', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
 }
