@@ -3,10 +3,7 @@ package com.projects.entity;
 import com.projects.entity.enumerations.Status;
 import com.projects.entity.enumerations.TicketType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -19,7 +16,11 @@ public class Ticket implements Serializable {
     private String description;
     private Status status;
     private TicketType type;
+    @ManyToOne
+    @JoinColumn(name="writer_id")
     private User writer;
+    @ManyToOne
+    @JoinColumn(name="assigned_id")
     private User assigned;
     /* TODO: ajouter une liste des tickets de dependances */
 

@@ -2,11 +2,9 @@ package com.projects.entity;
 
 import com.projects.entity.enumerations.Role;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 public class User implements Serializable {
@@ -18,6 +16,13 @@ public class User implements Serializable {
     private String password;
     private String name;
     private Role role;
+    @ManyToMany
+    @JoinTable(name="collaborate")
+    private Collection<Project> projects;
+    @OneToMany(mappedBy="writer")
+    private Collection<Ticket> myTickets;
+    @OneToMany(mappedBy="assigned")
+    private Collection<Ticket> assignedTickets;
 
     public User() {
     }

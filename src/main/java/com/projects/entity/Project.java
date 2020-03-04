@@ -1,9 +1,6 @@
 package com.projects.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -20,7 +17,7 @@ public class Project implements Serializable {
     private Date creationDate;
     private Date startDate;
     private Date endDate;
-
+    @ManyToMany(mappedBy="projects")
     private Collection<User> members;
 
     public Project() {
